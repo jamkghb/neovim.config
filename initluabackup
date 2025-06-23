@@ -1,0 +1,23 @@
+require('config.options')
+require('config.keybinds')
+require('config.lazy')
+
+require 'lspconfig'.clangd.setup {
+    init_options = {
+        fallbackFlags = {
+            '-std=c++20'
+        }
+    }
+}
+require("toggleterm").setup {}
+require("lspconfig")["tinymist"].setup {
+    settings = {
+        formatterMode = "typstyle",
+        exportPdf = "onType",
+        semanticTokens = "disable"
+    }
+}
+vim.lsp.enable('clangd')
+
+vim.cmd('colorscheme vim')
+vim.opt.cursorline = false
